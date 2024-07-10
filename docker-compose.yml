@@ -1,14 +1,16 @@
-# docker-compose.yml
+version: '3'
 services:
   postgres:
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-    ports: 
+    ports:
       - '5432:5432'
     volumes:
       - addressbook-db:/var/lib/postgresql/data
+    networks:
+      - nodejs_network
 
   addressbook:
     build:
@@ -22,6 +24,12 @@ services:
       - postgres
     ports:
       - '3000:3000'
-        
+    networks:
+      - nodejs_network
+
+networks:
+  nodejs_network:
+    driver: bridge
+
 volumes:
   addressbook-db:
