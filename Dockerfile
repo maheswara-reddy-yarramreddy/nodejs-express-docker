@@ -6,4 +6,5 @@ RUN npm install
 COPY src/ .
 EXPOSE 3000
 # pm2 recommended for production
-CMD sh -c "npm run migrate && npm run pm2"
+#CMD sh -c "npm run migrate && npm run pm2"
+CMD ["npm", "run", "pm2"]
