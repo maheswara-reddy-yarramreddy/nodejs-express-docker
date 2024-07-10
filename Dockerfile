@@ -5,4 +5,5 @@ COPY src/package.json src/package-lock.json .
 RUN npm install
 COPY src/ .
 EXPOSE 3000
-CMD [ "npm", "start"]
+# pm2 recommended for production
+CMD sh -c "npm run migrate && npm run pm2"
