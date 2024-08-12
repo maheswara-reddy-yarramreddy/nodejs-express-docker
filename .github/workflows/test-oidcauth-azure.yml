@@ -1,13 +1,15 @@
 name: Run Azure CLI Login with OpenID Connect
+
 on:
   workflow_dispatch:
 
 permissions:
   id-token: write # Require write permission to Fetch an OIDC token.
-      
-jobs: 
-  test:
+
+jobs:
+  deployment:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
     - name: Azure CLI Login
       uses: azure/login@v2
